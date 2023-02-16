@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Quiz Main Page</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <section class="secIntro">
+        <h1>Pokemon Trivia Quiz</h1>
+        <p>Try to answer the following Pokemon-related questions within the time limit. Each question will give you 10 points, for a total of 50 points. Each incorrect answer will deduct 10 seconds from your total time limit. Hit "Start" when you're ready to play.</p>
+        <button class="start-button">Start</button>
+        <button class="score-button">High Scores</button>
+    </section>
+
+    <section class="secQuiz">
+        <div>Time Remaining: <span class="timer">60s</span></div>
+        <div class="question"><p class="question-text">Question 1</p></div>
+        <ul class="answers">
+            <li class="answer-text">answer 1.1</li>
+            <li class="answer-text">answer 1.2</li>
+            <li class="answer-text">answer 1.3</li>
+            <li class="answer-text">answer 1.4</li>
+        </ul>
+    </section>
+
+    <section class="secResults">
+            <p>You've completed the quiz!</p>
+            <p>Your final score is </p>
+            <form>
+                <label>Enter name:</label>
+                <input type="text">
+                <button>Submit</button>
+            </form>
+            <button class="tryagain">Try again</button>
+    </section>
+    <script src="./assets/scripts/scripts.js"></script>
+</body>
+</html>
