@@ -155,6 +155,12 @@ function nextQuestion() {
         showResultOnly();
         questionNum = 0;
     }
+    let toBeRemove = document.querySelector(".result-Div");
+    if (toBeRemove != undefined) {
+        toBeRemove.remove("");
+    } else {
+        return;
+    }
 }
 
 function displayQuestion(questionNum) {
@@ -168,18 +174,29 @@ function displayQuestion(questionNum) {
         var listedChoice = document.createElement("li");
         listedChoice.textContent = newItem;
         choicesTextUl.appendChild(listedChoice);
+        listedChoice.classList.add("chosen-option");
         listedChoice.addEventListener("click", findTheAnswer);
     });
 }
 
 function findTheAnswer(event) {
+    let chosenOp = document.querySelectorAll(".chosen-option");
     let element = event.target;
     if (element.matches("li")) {
-        if (element.textContent === questionsAll[questionNum].answer);
-        console.log(element.textContent);
-        console.log(questionsAll[questionNum].answer);
-    } else {
-        console.log("WRONG ANSWER");
+        let resultDiv = document.createElement("div");
+        resultDiv.setAttribute("class", "result-Div");
+        secQuiz.appendChild(resultDiv);
+        if (questionsAll[questionNum].answer === element.textContent) {
+            resultDiv.textContent = "Correct!"
+            console.log(element.textContent);
+            console.log(questionsAll[questionNum].answer);
+        } else {
+            resultDiv.textContent = "Wrong!"
+            console.log("WRONG ANSWER");
+            console.log(chosenOp);
+        }
+    }
+    for (var i = 0; i < chosenOp.length; i++) {
+        chosenOp[i].classList.add("disabled");
     }
 }
-
