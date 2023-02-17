@@ -1,20 +1,28 @@
+//button variables to call on
 let startButton = document.querySelector(".start-button");
 let scoreButton = document.querySelector(".score-button");
 let backButton = document.querySelector(".back-button");
 let nextButton = document.querySelector(".nextQuestion");
 let retryButton = document.querySelector(".tryAgain");
 
+//page section variables to display
 let secIntro = document.querySelector(".secIntro");
 let secQuiz = document.querySelector(".secQuiz");
 let secResults = document.querySelector(".secResults");
 let secHighscores = document.querySelector(".secHighscores");
 
+//quiz questions
 let questionText = document.querySelector(".question-text");
 let choicesTextUl = document.querySelector(".choices-text");
 
+//time variables
 let currentTime = document.querySelector(".timer");
 let penaltyTime = 10;
 let totalTime = 60;
+
+//score variables
+let currentScore = 0;
+let scoreText = document.querySelector(".scoreDisplay");
 
 initialLoad();
 
@@ -65,7 +73,7 @@ function showResultOnly() {
     hideQuiz();
     hideScores();
     showResult();
-    return true;
+    scoreDisplay();
 }
 
 function showAndHideStart() {
@@ -88,6 +96,11 @@ function initialLoad() {
     hideQuiz();
     hideResult();
     hideScores();
+}
+
+function restart() {
+    location.reload();
+    return false;
 }
 
 let questionsAll = [
@@ -155,10 +168,12 @@ function runTimer() {
         totalTime--;
         currentTime.textContent = + totalTime;
 
-        if (totalTime <= 0) {
+        if (totalTime <= 0 || questionNum + 1 >= questionsAll.length) {
             clearInterval(intervalTime);
             currentTime.textContent = "Time's up";
-        } 
+            showResultOnly();
+            totalTime = 60;
+        }
     }, 1000);
     displayQuestion(0);
 }
@@ -205,16 +220,18 @@ function findTheAnswer(event) {
         resultDiv.setAttribute("class", "result-Div");
         secQuiz.appendChild(resultDiv);
         if (questionsAll[questionNum].answer === element.textContent) {
-            resultDiv.textContent = "Correct!"
-            console.log(element.textContent);
-            console.log(questionsAll[questionNum].answer);
+            resultDiv.textContent = "Correct!";
+            currentScore = currentScore + 10;
         } else {
-            resultDiv.textContent = "Wrong!"
-            console.log("WRONG ANSWER");
-            console.log(chosenOp);
+            totalTime = totalTime - penaltyTime;
+            resultDiv.textContent = "Wrong!";
         }
     }
     for (var i = 0; i < chosenOp.length; i++) {
         chosenOp[i].classList.add("disabled");
     }
+}
+
+function scoreDisplay () {
+    scoreText.textContent = "Your final score: " + currentScore + "/50";
 }
