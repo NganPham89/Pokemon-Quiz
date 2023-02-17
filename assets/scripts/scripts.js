@@ -155,7 +155,7 @@ function runTimer() {
         totalTime--;
         currentTime.textContent = + totalTime;
 
-        if (totalTime <= 0 || showResultOnly() === true) {
+        if (totalTime <= 0) {
             clearInterval(intervalTime);
             currentTime.textContent = "Time's up";
         } 
