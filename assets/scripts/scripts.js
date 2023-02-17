@@ -144,7 +144,7 @@ let questionsAll = [
     },
 ];
 
-let questionNum = 0;
+var questionNum = 0;
 
 function nextQuestion() {
     if (questionNum < questionsAll.length - 1) {
@@ -157,49 +157,29 @@ function nextQuestion() {
     }
 }
 
-function displayQuestion(index) {
-    let listChoice = document.createElement("li");
-    for (let i = 0; i < 4; i++) {
-        listChoice[i].appendChild(document.createTextNode(questionsAll[index].choices[i]));
-        choicesTextUl.appendChild(listChoice[i]);
-        listChoice[i].setAttribute("class", "choiceEach");
-        listChoice[i].setAttribute("onclick", "findTheAnswer(this)");
+function displayQuestion(questionNum) {
+    choicesTextUl.innerHTML = "";
+    for (var i = 0; i < questionsAll.length; i++) {
+        let questionTextInner = questionsAll[questionNum].question;
+        var choicesTextInner = questionsAll[questionNum].choices;
+        questionText.textContent = questionsAll[questionNum].number + ". " + questionTextInner;
     }
+    choicesTextInner.forEach(function (newItem) {
+        var listedChoice = document.createElement("li");
+        listedChoice.textContent = newItem;
+        choicesTextUl.appendChild(listedChoice);
+        listedChoice.addEventListener("click", findTheAnswer);
+    });
 }
 
-    // listChoice.appendChild(document.createTextNode(questionsAll[index].choices[0]));
-    // choicesTextUl.appendChild(listChoice);
-
-
-// function displayQuestion(index) {
-//     let choiceTextLi = '<div class="choiceEach">' + questionsAll[index].choices[0] + '</div>'
-//                             + '<div class="choiceEach">' + questionsAll[index].choices[1] + '</div>'
-//                             + '<div class="choiceEach">' + questionsAll[index].choices[2] + '</div>'
-//                             + '<div class="choiceEach">' + questionsAll[index].choices[3] + '</div>';
-//     questionText.textContent = questionsAll[index].number + ". " + questionsAll[index].question;
-//     choicesTextUl.innerHTML = choiceTextLi;
-//     // choicesTextUl.setAttribute("onclick", "findTheAnswer(this)");
-//     let singleChoice = document.querySelector(".choiceEach");
-//     console.log(choiceTextLi);
-//     for (let i = 0; i < singleChoice.length; i++) {
-//         singleChoice[i].setAttribute("onclick", "findTheAnswer(this)");
-//     };
-// }
-
-// function findTheAnswer(answer) {
-//     let chosenAnswer = answer.textContent;
-//     let allChoices = choicesTextUl.children.length;
-//     console.log(allChoices);
-//     console.log(chosenAnswer);
-//     let correctAnswer = questionsAll[questionNum].answer;
-//     console.log(correctAnswer);
-//     if (chosenAnswer === correctAnswer) {
-//         console.log ("You've chosen the correct answer!");
-//     } else {
-//         console.log ("you've picked the wrong answer!");
-//     }
-//     for (let i = 0; i < allChoices.length; i++) {
-//         choicesTextUl.children[i].classList.add("disabled");
-//     }
-// }
+function findTheAnswer(event) {
+    let element = event.target;
+    if (element.matches("li")) {
+        if (element.textContent === questionsAll[questionNum].answer);
+        console.log(element.textContent);
+        console.log(questionsAll[questionNum].answer);
+    } else {
+        console.log("WRONG ANSWER");
+    }
+}
 
