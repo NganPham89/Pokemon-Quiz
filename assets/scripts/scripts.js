@@ -4,6 +4,7 @@ let scoreButton = document.querySelector(".score-button");
 let backButton = document.querySelector(".back-button");
 let nextButton = document.querySelector(".nextQuestion");
 let retryButton = document.querySelector(".tryAgain");
+let submitButton = document.querySelector(".submitButton");
 
 //page section variables to display
 let secIntro = document.querySelector(".secIntro");
@@ -23,6 +24,7 @@ let totalTime = 60;
 //score variables
 let currentScore = 0;
 let scoreText = document.querySelector(".scoreDisplay");
+let userInfo = document.querySelector(".userName");
 
 initialLoad();
 
@@ -31,6 +33,7 @@ backButton.addEventListener("click", initialLoad);
 scoreButton.addEventListener("click", showScoresOnly);
 nextButton.addEventListener("click", nextQuestion);
 retryButton.addEventListener("click", initialLoad);
+submitButton.addEventListener("click", submitResult);
 
 
 function hideIntro() {
@@ -168,7 +171,7 @@ function runTimer() {
         totalTime--;
         currentTime.textContent = + totalTime;
 
-        if (totalTime <= 0 || questionNum + 1 >= questionsAll.length) {
+        if (totalTime <= 0 || questionNum + 1 > questionsAll.length) {
             clearInterval(intervalTime);
             currentTime.textContent = "Time's up";
             showResultOnly();
@@ -234,4 +237,15 @@ function findTheAnswer(event) {
 
 function scoreDisplay () {
     scoreText.textContent = "Your final score: " + currentScore + "/50";
+}
+
+function submitResult (event) {
+    event.preventDefault();
+    let userInit = userInfo.value;
+    if (userInit === "") {
+        alert("Please enter your name to record your score.")
+        console.log("nothing has been enter")
+    } else {
+        console.log(userInit);
+    }
 }
