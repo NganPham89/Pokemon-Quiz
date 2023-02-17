@@ -4,15 +4,17 @@ let backButton = document.querySelector(".back-button");
 let nextButton = document.querySelector(".nextQuestion");
 let retryButton = document.querySelector(".tryAgain");
 
-
 let secIntro = document.querySelector(".secIntro");
 let secQuiz = document.querySelector(".secQuiz");
 let secResults = document.querySelector(".secResults");
 let secHighscores = document.querySelector(".secHighscores");
 
-
 let questionText = document.querySelector(".question-text");
 let choicesTextUl = document.querySelector(".choices-text");
+
+let currentTime = document.querySelector(".timer");
+let penaltyTime = 10;
+let totalTime = 60;
 
 initialLoad();
 
@@ -47,6 +49,7 @@ function hideResult() {
 
 function showResult() {
     secResults.style.display = "";
+    return true;
 }
 
 function hideScores() {
@@ -62,6 +65,7 @@ function showResultOnly() {
     hideQuiz();
     hideScores();
     showResult();
+    return true;
 }
 
 function showAndHideStart() {
@@ -69,7 +73,7 @@ function showAndHideStart() {
     hideIntro();
     hideResult();
     hideScores();
-    displayQuestion(0);
+    runTimer();
 }
 
 function showScoresOnly() {
@@ -146,6 +150,19 @@ let questionsAll = [
 
 var questionNum = 0;
 
+function runTimer() {
+    var intervalTime = setInterval(function () {
+        totalTime--;
+        currentTime.textContent = + totalTime;
+
+        if (totalTime <= 0 || showResultOnly() === true) {
+            clearInterval(intervalTime);
+            currentTime.textContent = "Time's up";
+        } 
+    }, 1000);
+    displayQuestion(0);
+}
+
 function nextQuestion() {
     if (questionNum < questionsAll.length - 1) {
         questionNum++;
@@ -155,6 +172,7 @@ function nextQuestion() {
         showResultOnly();
         questionNum = 0;
     }
+
     let toBeRemove = document.querySelector(".result-Div");
     if (toBeRemove != undefined) {
         toBeRemove.remove("");
