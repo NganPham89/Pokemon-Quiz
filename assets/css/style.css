@@ -1,10 +1,47 @@
 :root {
-    --lightGray: rgb(207, 233, 233);
+    --lightGray: rgb(233, 232, 207);
     --yellowCream: rgb(248, 239, 105);
     --whiteCloud: rgb(238, 238, 238);
     --darkGray: rgb(21, 21, 19);
 }
 
+body {
+    background-color: var(--lightGray);
+}
+
+button {
+    background-color: var(--darkGray);
+    padding: .35% .75%;
+    color: var(--yellowCream);
+    border-radius: 15px;
+    margin: .25% auto;
+    font-size: 120%;
+}
+
+button:hover {
+    background-color: var(--yellowCream);
+    color: var(--darkGray);
+    box-shadow: 1px 1px 3px var(--darkGray);
+}
+
+.secIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 200%;
+    margin-top: 5%;
+}
+
+.introPara {
+    margin-bottom: 2%;
+    width: 30%;
+    line-height: 150%;
+    font-size: 120%;
+    text-align: center;
+}
 
 
 .disabled {
