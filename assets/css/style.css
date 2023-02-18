@@ -1,3 +1,12 @@
+:root {
+    --lightGray: rgb(207, 233, 233);
+    --yellowCream: rgb(248, 239, 105);
+    --whiteCloud: rgb(238, 238, 238);
+    --darkGray: rgb(21, 21, 19);
+}
+
+
+
 .disabled {
     pointer-events: none;
 }

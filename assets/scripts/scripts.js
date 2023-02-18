@@ -115,57 +115,57 @@ function reTry() {
 let questionsAll = [
     {
         number: 1,
-        question: "Question 1?",
-        answer: "Answer 1.1",
+        question: "Which of these is not a starter pokemon from Pokemon Red/Blue?",
+        answer: "Jigglypuff",
         choices: [
-            "Answer 1.1",
-            "Answer 1.2",
-            "Answer 1.3",
-            "Answer 1.4",
+            "Squirtle",
+            "Bulbasaur",
+            "Charmander",
+            "Jigglypuff",
         ]
     },
     {
         number: 2,
-        question: "Question 2?",
-        answer: "Answer 2.2",
+        question: "Which of these is a Dragon-type Pokemon?",
+        answer: "None of the above",
         choices: [
-            "Answer 2.1",
-            "Answer 2.2",
-            "Answer 2.3",
-            "Answer 2.4",
+            "Charizard",
+            "Onyx",
+            "Gyarados",
+            "None of the above",
         ]
     },
     {
         number: 3,
-        question: "Question 3?",
-        answer: "Answer 3.3",
+        question: "Which of these is not a Pokemon-Type?",
+        answer: "Glass",
         choices: [
-            "Answer 3.1",
-            "Answer 3.2",
-            "Answer 3.3",
-            "Answer 3.4",
+            "Fire",
+            "Water",
+            "Glass",
+            "Steel",
         ]
     },
     {
         number: 4,
-        question: "Question 4?",
-        answer: "Answer 4.4",
+        question: "Fill in the blank: 'I want to be ______'",
+        answer: "The very best",
         choices: [
-            "Answer 4.1",
-            "Answer 4.2",
-            "Answer 4.3",
-            "Answer 4.4",
+            "The very best",
+            "A Pokemon Master",
+            "A League Champion",
+            "None of the above",
         ]
     },
     {
         number: 5,
-        question: "Question 5?",
-        answer: "Answer 5.2",
+        question: "How much hair do I have left after this project?",
+        answer: "None",
         choices: [
-            "Answer 5.1",
-            "Answer 5.2",
-            "Answer 5.3",
-            "Answer 5.4",
+            "One strand",
+            "None",
+            "Over 9000",
+            "Hair? What's that?",
         ]
     },
 ];
