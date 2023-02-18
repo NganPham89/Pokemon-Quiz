@@ -5,6 +5,8 @@ let backButton = document.querySelector(".back-button");
 let nextButton = document.querySelector(".nextQuestion");
 let retryButton = document.querySelector(".tryAgain");
 let submitButton = document.querySelector(".submitButton");
+let clearScoreButton = document.querySelector(".clearScores");
+
 
 //page section variables to display
 let secIntro = document.querySelector(".secIntro");
@@ -12,7 +14,7 @@ let secQuiz = document.querySelector(".secQuiz");
 let secResults = document.querySelector(".secResults");
 let secHighscores = document.querySelector(".secHighscores");
 
-//quiz questions
+//quiz variables
 let questionText = document.querySelector(".question-text");
 let choicesTextUl = document.querySelector(".choices-text");
 
@@ -25,24 +27,25 @@ let totalTime = 60;
 let currentScore = 0;
 let scoreText = document.querySelector(".scoreDisplay");
 let userInfo = document.querySelector(".userName");
+let scoreListFull = document.querySelector(".scoreHolder");
 
 initialLoad();
 
+//all the event listeners
 startButton.addEventListener("click", showAndHideStart);
 backButton.addEventListener("click", initialLoad);
 scoreButton.addEventListener("click", showScoresOnly);
 nextButton.addEventListener("click", nextQuestion);
 retryButton.addEventListener("click", initialLoad);
 submitButton.addEventListener("click", submitResult);
+clearScoreButton.addEventListener("click", clearAllScores);
 
 
 function hideIntro() {
-    console.log("I clicked the start button");
     secIntro.style.display = "none";
 }
 
 function showIntro() {
-    console.log("I clicked the back button");
     secIntro.style.display = "";
 }
 
@@ -92,6 +95,7 @@ function showScoresOnly() {
     hideIntro();
     hideResult();
     hideQuiz();
+    displayHighScores();
 }
 
 function initialLoad() {
@@ -99,11 +103,13 @@ function initialLoad() {
     hideQuiz();
     hideResult();
     hideScores();
+    totalTime = 60;
+    currentScore = 0;
+    userInfo.value = "";
 }
 
-function restart() {
-    location.reload();
-    return false;
+function reTry() {
+    window.location.replace("./index.html");
 }
 
 let questionsAll = [
@@ -175,7 +181,6 @@ function runTimer() {
             clearInterval(intervalTime);
             currentTime.textContent = "Time's up";
             showResultOnly();
-            totalTime = 60;
         }
     }, 1000);
     displayQuestion(0);
@@ -186,7 +191,6 @@ function nextQuestion() {
         questionNum++;
         displayQuestion(questionNum);
     } else {
-        console.log("You've answered all questions!");
         showResultOnly();
         questionNum = 0;
     }
@@ -235,17 +239,45 @@ function findTheAnswer(event) {
     }
 }
 
-function scoreDisplay () {
+function scoreDisplay() {
     scoreText.textContent = "Your final score: " + currentScore + "/50";
 }
 
-function submitResult (event) {
+function submitResult(event) {
     event.preventDefault();
     let userInit = userInfo.value;
     if (userInit === "") {
-        alert("Please enter your name to record your score.")
-        console.log("nothing has been enter")
+        alert("Please enter your initials to record your score.")
     } else {
-        console.log(userInit);
+        let nameNscore = {
+            userInitials: userInit,
+            score: currentScore
+        };
+        console.log(nameNscore);
+        let recentHighScore = JSON.stringify(nameNscore);
+        localStorage.setItem("highScores", recentHighScore);
     }
 }
+
+function displayHighScores() {
+    let tempHighScores = JSON.parse(localStorage.getItem("highScores"));
+    if (tempHighScores !== null) {
+        let allHighScores = [];
+        allHighScores.push(tempHighScores);
+        for (var i = 0; i < allHighScores.length; i++) {
+            let scoreList = document.createElement("li");
+            scoreList.textContent = allHighScores[i].userInitials + " - " + allHighScores[i].score;
+            scoreListFull.appendChild(scoreList);
+        }
+    } else {
+        let scoreList = document.createElement("li");
+        scoreList.textContent = "No High Score Recorded Yet";
+        scoreListFull.appendChild(scoreList);
+    }
+}
+function clearAllScores() {
+    localStorage.clear();
+    location.reload();
+    return false;
+}
+
