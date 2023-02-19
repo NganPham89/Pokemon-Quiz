@@ -109,10 +109,6 @@ function initialLoad() {
     questionNum = 0;
 }
 
-function reTry() {
-    window.location.replace("./index.html");
-}
-
 let questionsAll = [
     {
         number: 1,
@@ -257,30 +253,32 @@ function submitResult(event) {
             userInitials: userInit,
             score: currentScore
         };
-        console.log(nameNscore);
         let recentHighScore = JSON.stringify(nameNscore);
         localStorage.setItem("highScores", recentHighScore);
+        alert("Your score has been recorded. Thank you for playing.")
     };
+    userInfo.value = "";
 }
+
+let highScoreCount = 0;
 
 function displayHighScores() {
     let tempHighScores = JSON.parse(localStorage.getItem("highScores"));
+    let allHighScores = [];
     if (tempHighScores !== null) {
-        let allHighScores = [];
         allHighScores.push(tempHighScores);
         for (var i = 0; i < allHighScores.length; i++) {
             let scoreList = document.createElement("li");
             scoreList.textContent = allHighScores[i].userInitials + " - " + allHighScores[i].score;
             scoreListFull.appendChild(scoreList);
+            highScoreCount++;
         }
-    } else {
-        let scoreList = document.createElement("li");
-        scoreList.textContent = "No High Score Recorded Yet";
-        scoreListFull.appendChild(scoreList);
     }
 }
+
 function clearAllScores() {
     localStorage.clear();
+    highScoreCount = 0;
     location.reload();
     return false;
 }
