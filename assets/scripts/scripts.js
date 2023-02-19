@@ -260,7 +260,7 @@ function submitResult(event) {
         console.log(nameNscore);
         let recentHighScore = JSON.stringify(nameNscore);
         localStorage.setItem("highScores", recentHighScore);
-    }
+    };
 }
 
 function displayHighScores() {
