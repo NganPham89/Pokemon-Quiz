@@ -131,7 +131,7 @@ let questionsAll = [
         answer: "None of the above",
         choices: [
             "Charizard",
-            "Onyx",
+            "Onix",
             "Gyarados",
             "None of the above",
         ]
