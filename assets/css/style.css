@@ -51,11 +51,20 @@ h2 {
     text-align: center;
 }
 
+.nextQuestion {
+    position: relative;
+    right: 17.5%;
+}
+
 .secQuiz {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
     font-size: 120%;
+    margin-left: 40%;
+    margin-top: 1.5%;
 }
 
 .question-text {
@@ -66,32 +75,29 @@ h2 {
 ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
 }
 
 .chosen-option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
-    right: 12.5%;
+    right: -15%;
     line-height: 150%;
     background-color: var(--yellowCheese);
-    margin: 7% 0% 7% 0%;
+    margin: 8% 0% 8% 0%;
     text-align: center;
-    padding: 2% 60%;
+    padding: 2% 60% 2% 10%;
     border: 1px solid black;
     border-radius: 10px; 
     width: 120%;
+    list-style: none;
 }
 
 li {
     display: flex;
-    align-items: center;
     justify-content: center;
     position: relative;
-    right: 10%;
+    right: 100%;
     line-height: 150%;
     background-color: var(--yellowCheese);
     margin: 7% 0% 7% 0%;
@@ -100,6 +106,7 @@ li {
     border: 1px solid black;
     border-radius: 10px; 
     width: 120%;
+    font-size: 110%;
 }
 
 li:hover {
