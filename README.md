@@ -19,8 +19,8 @@ It can be found [here](https://nganpham89.github.io/Pokemon-Quiz/).
 
 ## Goals of this project
 
-[x] Learning about how to generate HTML/CSS elements using Javascript
-[x] Integrating time interval function into other Javascript functions
-[x] Experimenting with navigating and modifying DOM elements
-[x] 'for loop', lots of 'for loops'
+- [x] Learning about how to generate HTML/CSS elements using Javascript
+- [x] Integrating time interval function into other Javascript functions
+- [x] Experimenting with navigating and modifying DOM elements
+- [x] 'for loop', lots of 'for loops'
 
