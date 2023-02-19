@@ -106,6 +106,7 @@ function initialLoad() {
     totalTime = 60;
     currentScore = 0;
     userInfo.value = "";
+    questionNum = 0;
 }
 
 function reTry() {
@@ -172,27 +173,13 @@ let questionsAll = [
 
 var questionNum = 0;
 
-function runTimer() {
-    var intervalTime = setInterval(function () {
-        totalTime--;
-        currentTime.textContent = + totalTime;
-
-        if (totalTime <= 0 || questionNum + 1 > questionsAll.length) {
-            clearInterval(intervalTime);
-            currentTime.textContent = "Time's up";
-            showResultOnly();
-        }
-    }, 1000);
-    displayQuestion(0);
-}
-
 function nextQuestion() {
     if (questionNum < questionsAll.length - 1) {
         questionNum++;
         displayQuestion(questionNum);
     } else {
         showResultOnly();
-        questionNum = 0;
+        questionNum = 6;
     }
 
     let toBeRemove = document.querySelector(".result-Div");
@@ -219,6 +206,21 @@ function displayQuestion(questionNum) {
     });
 }
 
+function runTimer() {
+    var intervalTime = setInterval(function () {
+        totalTime--;
+        currentTime.textContent = + totalTime + "s";
+
+        if (totalTime <= 0 || questionNum > questionsAll.length) {
+            clearInterval(intervalTime);
+            console.log("TIMER IS FINALLY SLAYED!!!")
+            currentTime.textContent = "Time's up";
+            showResultOnly();
+        }
+    }, 1000);
+    displayQuestion(questionNum);
+}
+
 function findTheAnswer(event) {
     let chosenOp = document.querySelectorAll(".chosen-option");
     let element = event.target;
@@ -227,11 +229,13 @@ function findTheAnswer(event) {
         resultDiv.setAttribute("class", "result-Div");
         secQuiz.appendChild(resultDiv);
         if (questionsAll[questionNum].answer === element.textContent) {
+            resultDiv.setAttribute("id", "bgGreen");
             resultDiv.textContent = "Correct!";
             currentScore = currentScore + 10;
         } else {
             totalTime = totalTime - penaltyTime;
-            resultDiv.textContent = "Wrong!";
+            resultDiv.setAttribute("id", "bgRed");
+            resultDiv.textContent = "Incorrect!";
         }
     }
     for (var i = 0; i < chosenOp.length; i++) {

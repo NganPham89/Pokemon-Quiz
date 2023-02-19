@@ -3,6 +3,7 @@
     --yellowCream: rgb(248, 239, 105);
     --whiteCloud: rgb(238, 238, 238);
     --darkGray: rgb(21, 21, 19);
+    --yellowCheese: rgb(253, 239, 45);
 }
 
 body {
@@ -10,6 +11,9 @@ body {
 }
 
 button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--darkGray);
     padding: .35% .75%;
     color: var(--yellowCream);
@@ -35,6 +39,10 @@ h1 {
     margin-top: 5%;
 }
 
+h2 {
+    margin: 2% 0;
+}
+
 .introPara {
     margin-bottom: 2%;
     width: 30%;
@@ -43,7 +51,134 @@ h1 {
     text-align: center;
 }
 
+.secQuiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 120%;
+}
 
+.question-text {
+    margin-top: 15%;
+    font-size: 120%;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chosen-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 12.5%;
+    line-height: 150%;
+    background-color: var(--yellowCheese);
+    margin: 7% 0% 7% 0%;
+    text-align: center;
+    padding: 2% 60%;
+    border: 1px solid black;
+    border-radius: 10px; 
+    width: 120%;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 40%;
+    line-height: 150%;
+    background-color: var(--yellowCheese);
+    margin: 7% 0% 7% 0%;
+    text-align: center;
+    padding: 2% 60%;
+    border: 1px solid black;
+    border-radius: 10px; 
+    width: 120%;
+}
+
+li:hover {
+    background-color: black;
+    color: var(--yellowCheese);
+}
+
+.result-Div {
+    margin-top: 1.5%;
+    padding: 0.5% 1%;
+}
+
+#bgGreen {
+    background-color: green;
+    color: var(--yellowCream);
+    border: 1px solid black;
+    font-size: 110%;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
+#bgRed {
+    background-color: red;
+    color: var(--yellowCream);
+    border: 1px solid black;
+    font-size: 110%;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
+.secResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3% 0;
+    font-size: 120%;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    position: relative;
+    left: 18.5%;
+    margin-top: 1%;
+}
+
+.resultTitle {
+    font-size: 120%;
+    margin-bottom: 2%;
+}
+
+.tryAgain {
+    margin-top: 2%;
+}
+
+.userName {
+    margin: 1%;
+}
+
+.userName:focus {
+    border: 1px solid black;
+    outline: 2px solid var(--yellowCheese);
+}
+
+.submitButton {
+    position: relative;
+    right: 35%;
+}
+
+.secHighscores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clearScores {
+    margin: .5% 0 .2% 0;
+}
 .disabled {
     pointer-events: none;
 }
