@@ -260,7 +260,7 @@ function submitResult(event) {
     userInfo.value = "";
 }
 
-let highScoreCount = 0;
+let hasRecordLabel = false;
 
 function displayHighScores() {
     let tempHighScores = JSON.parse(localStorage.getItem("highScores"));
@@ -271,8 +271,18 @@ function displayHighScores() {
             let scoreList = document.createElement("li");
             scoreList.textContent = allHighScores[i].userInitials + " - " + allHighScores[i].score;
             scoreListFull.appendChild(scoreList);
-            highScoreCount++;
+            hasRecordLabel = true;
+            removeLabel();
         }
+    } else {
+        scoreListFull.innerHTML = '<li class=noScoreLabel>' + "No score has been recorded yet" + '</li>';
+    }
+}
+
+function removeLabel() {
+    if (hasRecordLabel === true) {
+        let noScoreLabel = document.querySelector(".noScoreLabel");
+        noScoreLabel.remove("");
     }
 }
 
