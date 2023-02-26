@@ -253,20 +253,22 @@ function submitResult(event) {
             userInitials: userInit,
             score: currentScore
         };
-        let recentHighScore = JSON.stringify(nameNscore);
+        let tempHighScores = [];
+        tempHighScores.push(nameNscore);
+        let recentHighScore = JSON.stringify(tempHighScores);
         localStorage.setItem("highScores", recentHighScore);
         alert("Your score has been recorded. Thank you for playing.")
     };
     userInfo.value = "";
+    scoreText.textContent = "Your final score: " + "__" + "/50";
 }
+
 
 let hasRecordLabel = false;
 
 function displayHighScores() {
-    let tempHighScores = JSON.parse(localStorage.getItem("highScores"));
-    let allHighScores = [];
-    if (tempHighScores !== null) {
-        allHighScores.push(tempHighScores);
+    let allHighScores = JSON.parse(localStorage.getItem("highScores"))
+    if (allHighScores !== null) {
         for (var i = 0; i < allHighScores.length; i++) {
             let scoreList = document.createElement("li");
             scoreList.textContent = allHighScores[i].userInitials + " - " + allHighScores[i].score;
@@ -280,15 +282,14 @@ function displayHighScores() {
 }
 
 function removeLabel() {
-    if (hasRecordLabel === true) {
-        let noScoreLabel = document.querySelector(".noScoreLabel");
+    let noScoreLabel = document.querySelector(".noScoreLabel");
+    if (hasRecordLabel === true && noScoreLabel !== null) {
         noScoreLabel.remove("");
     }
 }
 
 function clearAllScores() {
     localStorage.clear();
-    highScoreCount = 0;
     location.reload();
     return false;
 }
