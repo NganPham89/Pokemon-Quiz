@@ -226,3 +226,21 @@ form {
 .disabled {
     pointer-events: none;
 }
+
+@media screen and  (max-width: 769px) {
+    #bgRed {
+        width: 30%;
+    }
+}
+
+@media screen and  (max-width: 769px) {
+    #bgGreen {
+        width: 30%;
+    }
+}
+
+@media screen and  (max-width: 769px) {
+    .userName {
+        width: 200px;
+    }
+}
